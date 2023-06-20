@@ -1,0 +1,14 @@
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Data\bin\Debug\net6.0\Assignment_UKHO.Data.deps.json
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Data\bin\Debug\net6.0\Assignment_UKHO.Data.runtimeconfig.json
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Data\bin\Debug\net6.0\Assignment_UKHO.Data.dll
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Data\bin\Debug\net6.0\Assignment_UKHO.Data.pdb
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Data\obj\Debug\net6.0\Assignment_UKHO.Data.csproj.AssemblyReference.cache
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Data\obj\Debug\net6.0\Assignment_UKHO.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Data\obj\Debug\net6.0\Assignment_UKHO.Data.AssemblyInfoInputs.cache
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Data\obj\Debug\net6.0\Assignment_UKHO.Data.AssemblyInfo.cs
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Data\obj\Debug\net6.0\Assignment_UKHO.Data.csproj.CoreCompileInputs.cache
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Data\obj\Debug\net6.0\Assignment_UKHO.Data.dll
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Data\obj\Debug\net6.0\refint\Assignment_UKHO.Data.dll
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Data\obj\Debug\net6.0\Assignment_UKHO.Data.pdb
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Data\obj\Debug\net6.0\Assignment_UKHO.Data.genruntimeconfig.cache
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Data\obj\Debug\net6.0\ref\Assignment_UKHO.Data.dll

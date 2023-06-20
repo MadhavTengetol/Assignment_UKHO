@@ -1,0 +1,12 @@
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Tests\bin\Debug\net6.0\Assignment_UKHO.Tests.deps.json
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Tests\bin\Debug\net6.0\Assignment_UKHO.Tests.dll
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Tests\bin\Debug\net6.0\Assignment_UKHO.Tests.pdb
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Tests\obj\Debug\net6.0\Assignment_UKHO.Tests.csproj.AssemblyReference.cache
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Tests\obj\Debug\net6.0\Assignment_UKHO.Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Tests\obj\Debug\net6.0\Assignment_UKHO.Tests.AssemblyInfoInputs.cache
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Tests\obj\Debug\net6.0\Assignment_UKHO.Tests.AssemblyInfo.cs
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Tests\obj\Debug\net6.0\Assignment_UKHO.Tests.csproj.CoreCompileInputs.cache
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Tests\obj\Debug\net6.0\Assignment_UKHO.Tests.dll
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Tests\obj\Debug\net6.0\refint\Assignment_UKHO.Tests.dll
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Tests\obj\Debug\net6.0\Assignment_UKHO.Tests.pdb
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Tests\obj\Debug\net6.0\ref\Assignment_UKHO.Tests.dll
