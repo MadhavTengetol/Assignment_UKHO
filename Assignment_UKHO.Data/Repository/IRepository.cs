@@ -9,6 +9,6 @@ namespace Assignment_UKHO.Data.Repository
     public interface IRepository
     {
         public Batch CreateBatch(Batch batch);
-        public Batch GetBatchById(Guid id);
+        public Task<Batch> GetBatchById(Guid id);
     }
 }

@@ -5,6 +5,7 @@ using Assignment_UKHO.Services;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Assignment_UKHO.Controllers
 {
@@ -20,6 +21,9 @@ namespace Assignment_UKHO.Controllers
             this.validator = validator;
         }
 
+        [SwaggerOperation(summary:"Create a new batch to upload files into.")]
+        [SwaggerResponse(statusCode: 400,description: "Bad request - there are one or more errors in the specified parameters")]
+        [SwaggerResponse(statusCode: 201,description: "Created")]
         [HttpPost]
         [Route("batch")]
         public IActionResult CreateBatch(Batch batch)
@@ -39,7 +43,47 @@ namespace Assignment_UKHO.Controllers
                 errorResponse.Errors = errors1;
                 return BadRequest(errorResponse);
             }
-            return Created("", new { BatchId = Guid.NewGuid() });
+            batch.BatchId = Guid.NewGuid();
+            var createdBatch = service.Create(batch);
+            return Created("", new { BatchId = createdBatch.BatchId });
+
+        }
+
+
+        [SwaggerResponse(statusCode: 200, description: "Ok - Details about the batch")]
+        [SwaggerResponse(statusCode: 400, description: "Bad request - could be an invalid batch ID format. Batch IDs should be a GUID.")]
+        [SwaggerResponse(statusCode: 404, description:"Not Found - Could be there the batch ID doesn't exist.")]
+        [HttpGet]
+        [Route("batch/{batchId}")]
+        public async Task<IActionResult> GetBatchById([FromRoute]Guid batchId)
+        {
+            if(batchId != Guid.Empty)
+            {
+                var result =await service.GetBatchById(batchId);
+                if(result == null)
+                {
+                    var errorRes = new ErrorModel
+                    {
+                        CorrelationId = Guid.NewGuid().ToString(),
+                        Errors = new List<Errors>
+                {
+                    new Errors{Source="Batch Id",Description="Batch Id does not exists."}
+                }
+                    };
+                    return NotFound(errorRes);
+                }
+                    
+                return Ok(result);
+            }
+            var errorResponse = new ErrorModel
+            {
+                CorrelationId = Guid.NewGuid().ToString(),
+                Errors = new List<Errors>
+                {
+                    new Errors{Source="Batch Id",Description="Batch Id is not valid."}
+                }
+            };
+            return BadRequest(errorResponse);
         }
     }
 }

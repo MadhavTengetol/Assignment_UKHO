@@ -16,9 +16,9 @@ namespace Assignment_UKHO.Services
             return repository.CreateBatch(batch);
         }
 
-        public Batch GetBatchById(Guid id)
+        public async Task<Batch> GetBatchById(Guid id)
         {
-            return repository.GetBatchById(id);
+            return await repository.GetBatchById(id);
         }
     }
 }

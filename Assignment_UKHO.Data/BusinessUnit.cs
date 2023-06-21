@@ -7,18 +7,13 @@ using System.Threading.Tasks;
 
 namespace Assignment_UKHO.Data
 {
-    public class Files
+    public class BusinessUnit
     {
         [JsonIgnore]
         public int Id { get; set; }
-        public string FileName { get; set; }
-        public int FileSize { get; set; }
-        public string MimeType { get; set; }
-        public string Hash { get; set; }
-        public List<FileAttributes> Attributes { get; set; }
+        public string Unit { get; set; }
 
         [JsonIgnore]
         public Guid BatchId { get; set; }
-    
     }
 }

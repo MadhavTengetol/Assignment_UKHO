@@ -72,3 +72,5 @@ C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO\bin\Debug\net6
 C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO\bin\Debug\net6.0\FluentValidation.dll
 C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO\bin\Debug\net6.0\Swashbuckle.AspNetCore.Annotations.dll

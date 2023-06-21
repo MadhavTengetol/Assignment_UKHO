@@ -82,6 +82,29 @@ namespace Assignment_UKHO.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Files",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FileName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FileSize = table.Column<int>(type: "int", nullable: false),
+                    MimeType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Hash = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BatchId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Files", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Files_Batches_BatchId",
+                        column: x => x.BatchId,
+                        principalTable: "Batches",
+                        principalColumn: "BatchId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Attributes",
                 columns: table => new
                 {
@@ -89,6 +112,7 @@ namespace Assignment_UKHO.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Key = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Value = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FilesId = table.Column<int>(type: "int", nullable: false),
                     BatchId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
@@ -99,35 +123,11 @@ namespace Assignment_UKHO.Data.Migrations
                         column: x => x.BatchId,
                         principalTable: "Batches",
                         principalColumn: "BatchId");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Files",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FileName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FileSize = table.Column<int>(type: "int", nullable: false),
-                    MimeType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Hash = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AttributesId = table.Column<int>(type: "int", nullable: false),
-                    BatchId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Files", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Files_Attributes_AttributesId",
-                        column: x => x.AttributesId,
-                        principalTable: "Attributes",
+                        name: "FK_Attributes_Files_FilesId",
+                        column: x => x.FilesId,
+                        principalTable: "Files",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Files_Batches_BatchId",
-                        column: x => x.BatchId,
-                        principalTable: "Batches",
-                        principalColumn: "BatchId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -137,14 +137,14 @@ namespace Assignment_UKHO.Data.Migrations
                 column: "BatchId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Attributes_FilesId",
+                table: "Attributes",
+                column: "FilesId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Batches_AclId",
                 table: "Batches",
                 column: "AclId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Files_AttributesId",
-                table: "Files",
-                column: "AttributesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Files_BatchId",
@@ -165,7 +165,7 @@ namespace Assignment_UKHO.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Files");
+                name: "Attributes");
 
             migrationBuilder.DropTable(
                 name: "ReadGroups");
@@ -174,7 +174,7 @@ namespace Assignment_UKHO.Data.Migrations
                 name: "ReadUsers");
 
             migrationBuilder.DropTable(
-                name: "Attributes");
+                name: "Files");
 
             migrationBuilder.DropTable(
                 name: "Batches");

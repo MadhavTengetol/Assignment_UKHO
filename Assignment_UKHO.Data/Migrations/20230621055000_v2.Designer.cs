@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assignment_UKHO.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230620113241_v2")]
+    [Migration("20230621055000_v2")]
     partial class v2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,7 +32,13 @@ namespace Assignment_UKHO.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<Guid>("BatchId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("BatchId")
+                        .IsUnique();
 
                     b.ToTable("Acl");
                 });
@@ -45,11 +51,8 @@ namespace Assignment_UKHO.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<Guid?>("BatchId")
+                    b.Property<Guid>("BatchId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("FilesId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Key")
                         .IsRequired()
@@ -63,8 +66,6 @@ namespace Assignment_UKHO.Data.Migrations
 
                     b.HasIndex("BatchId");
 
-                    b.HasIndex("FilesId");
-
                     b.ToTable("Attributes");
                 });
 
@@ -73,9 +74,6 @@ namespace Assignment_UKHO.Data.Migrations
                     b.Property<Guid>("BatchId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("AclId")
-                        .HasColumnType("int");
 
                     b.Property<string>("BusinessUnit")
                         .IsRequired()
@@ -86,9 +84,36 @@ namespace Assignment_UKHO.Data.Migrations
 
                     b.HasKey("BatchId");
 
-                    b.HasIndex("AclId");
-
                     b.ToTable("Batches");
+                });
+
+            modelBuilder.Entity("Assignment_UKHO.Data.FileAttributes", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<Guid>("BatchId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int?>("FilesId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FilesId");
+
+                    b.ToTable("FileAttributes");
                 });
 
             modelBuilder.Entity("Assignment_UKHO.Data.Files", b =>
@@ -168,28 +193,29 @@ namespace Assignment_UKHO.Data.Migrations
                     b.ToTable("ReadUsers");
                 });
 
-            modelBuilder.Entity("Assignment_UKHO.Data.Attributes", b =>
+            modelBuilder.Entity("Assignment_UKHO.Data.Acl", b =>
                 {
                     b.HasOne("Assignment_UKHO.Data.Batch", null)
-                        .WithMany("Attributes")
-                        .HasForeignKey("BatchId");
-
-                    b.HasOne("Assignment_UKHO.Data.Files", null)
-                        .WithMany("Attributes")
-                        .HasForeignKey("FilesId")
+                        .WithOne("Acl")
+                        .HasForeignKey("Assignment_UKHO.Data.Acl", "BatchId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Assignment_UKHO.Data.Batch", b =>
+            modelBuilder.Entity("Assignment_UKHO.Data.Attributes", b =>
                 {
-                    b.HasOne("Assignment_UKHO.Data.Acl", "Acl")
-                        .WithMany()
-                        .HasForeignKey("AclId")
+                    b.HasOne("Assignment_UKHO.Data.Batch", null)
+                        .WithMany("Attributes")
+                        .HasForeignKey("BatchId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
 
-                    b.Navigation("Acl");
+            modelBuilder.Entity("Assignment_UKHO.Data.FileAttributes", b =>
+                {
+                    b.HasOne("Assignment_UKHO.Data.Files", null)
+                        .WithMany("Attributes")
+                        .HasForeignKey("FilesId");
                 });
 
             modelBuilder.Entity("Assignment_UKHO.Data.Files", b =>
@@ -228,6 +254,9 @@ namespace Assignment_UKHO.Data.Migrations
 
             modelBuilder.Entity("Assignment_UKHO.Data.Batch", b =>
                 {
+                    b.Navigation("Acl")
+                        .IsRequired();
+
                     b.Navigation("Attributes");
 
                     b.Navigation("Files");
