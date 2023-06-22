@@ -73,6 +73,9 @@ namespace Assignment_UKHO.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime>("BatchPublicationDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("BusinessUnit")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -80,9 +83,30 @@ namespace Assignment_UKHO.Data.Migrations
                     b.Property<DateTime>("ExpiryDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("BatchId");
 
                     b.ToTable("Batches");
+                });
+
+            modelBuilder.Entity("Assignment_UKHO.Data.BusinessUnit", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("UnitName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BusinessUnit");
                 });
 
             modelBuilder.Entity("Assignment_UKHO.Data.FileAttributes", b =>
@@ -93,10 +117,7 @@ namespace Assignment_UKHO.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<Guid>("BatchId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int?>("FilesId")
+                    b.Property<int>("FilesId")
                         .HasColumnType("int");
 
                     b.Property<string>("Key")
@@ -213,7 +234,9 @@ namespace Assignment_UKHO.Data.Migrations
                 {
                     b.HasOne("Assignment_UKHO.Data.Files", null)
                         .WithMany("Attributes")
-                        .HasForeignKey("FilesId");
+                        .HasForeignKey("FilesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Assignment_UKHO.Data.Files", b =>

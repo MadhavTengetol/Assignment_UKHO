@@ -1,9 +1,10 @@
 ﻿using Assignment_UKHO.Data;
+using Assignment_UKHO.Dto;
 using FluentValidation;
 
 namespace Assignment_UKHO.Validations
 {
-    public class BatchValidator : AbstractValidator<Batch>
+    public class BatchValidator : AbstractValidator<BatchDto>
     {
 
         public BatchValidator()
@@ -30,7 +31,7 @@ namespace Assignment_UKHO.Validations
             {
                 child.RuleFor(c => c.FileName).NotEmpty().NotNull().WithMessage("Filename is Required");
                 child.RuleFor(c => c.FileSize).NotNull().NotEmpty().WithMessage("FileSize should not be null")
-                                                .ExclusiveBetween(1,50).WithMessage("FileSize should be between 1 -50");
+                                                .ExclusiveBetween(1,200).WithMessage("FileSize should be between 1 -200");
                 child.RuleFor(c => c.MimeType).NotEmpty().NotNull().WithMessage("MimeType Should not be null");
                 child.RuleFor(c => c.Hash).NotEmpty().NotNull().WithMessage("Hash Should not be null"); ;
                 child.RuleForEach(c => c.Attributes).NotNull().NotEmpty().ChildRules(subchild =>

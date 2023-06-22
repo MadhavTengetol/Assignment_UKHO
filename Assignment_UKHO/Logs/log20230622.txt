@@ -1,0 +1,2 @@
+06/22/2023 13:50:47 +05:30 [Information] - Message: Get Batch By Id is called
+06/22/2023 13:53:01 +05:30 [Information] - Message: Business unit does not exists

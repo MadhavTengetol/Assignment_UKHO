@@ -16,10 +16,11 @@ namespace Assignment_UKHO.Data.Repository
             this.context = context;
         }
 
-        public Batch CreateBatch(Batch batch)
+        public async Task<Batch> CreateBatch(Batch batch)
         {
-            context.Batches.Add(batch);
-            context.SaveChanges();
+            await context.Batches.AddAsync(batch);
+            await context.SaveChangesAsync();
+            
             return batch;
         }
 
@@ -38,5 +39,16 @@ namespace Assignment_UKHO.Data.Repository
             }
             return data;
         }
+
+
+        public bool IsExists(string unitName)
+        {
+            var result = context.BusinessUnit.FirstOrDefault(x=>x.UnitName == unitName);
+            if(result is null) 
+                return false;
+            return true;
+        }
+
+        
     }
 }

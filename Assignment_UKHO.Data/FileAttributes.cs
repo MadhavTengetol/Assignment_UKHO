@@ -16,6 +16,6 @@ namespace Assignment_UKHO.Data
         public string Value { get; set; }
 
         [JsonIgnore]
-        public Guid BatchId { get; set; }
+        public int FilesId { get; set; }
     }
 }

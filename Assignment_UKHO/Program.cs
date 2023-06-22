@@ -1,12 +1,20 @@
 using Assignment_UKHO.Data;
-using Assignment_UKHO.Services;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using FluentValidation;
+using Serilog;
+
 
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+#region " Serilog"
+var logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(builder.Configuration)
+                .CreateLogger();
+
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(logger);
+#endregion
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -14,10 +22,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(x=>x.EnableAnnotations());
 
-//builder.Services.AddScoped<BatchService>();
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
-//var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
 builder.Services.AddDbContext<AppDbContext>();
 
 

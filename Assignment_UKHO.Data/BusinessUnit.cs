@@ -11,9 +11,9 @@ namespace Assignment_UKHO.Data
     {
         [JsonIgnore]
         public int Id { get; set; }
-        public string Unit { get; set; }
+        public string UnitName { get; set; }
 
-        [JsonIgnore]
-        public Guid BatchId { get; set; }
+        //[JsonIgnore]
+        //public Guid BatchId { get; set; }
     }
 }
