@@ -1,5 +1,7 @@
 using Assignment_UKHO.Data;
+using Assignment_UKHO.ErrorHandling;
 using FluentValidation;
+using Microsoft.AspNetCore.Mvc;
 using Serilog;
 
 
@@ -25,6 +27,7 @@ builder.Services.AddSwaggerGen(x=>x.EnableAnnotations());
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+
 
 
 builder.Services.AddDbContext<AppDbContext>();

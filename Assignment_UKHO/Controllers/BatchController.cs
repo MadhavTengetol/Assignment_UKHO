@@ -31,6 +31,7 @@ namespace Assignment_UKHO.Controllers
         }
 
         [SwaggerOperation(summary:"Create a new batch to upload files into.")]
+        [Produces("application/json")]
         [SwaggerResponse(statusCode: 400,description: "Bad request - there are one or more errors in the specified parameters")]
         [SwaggerResponse(statusCode: 201,description: "Created")]
         [HttpPost]
@@ -108,5 +109,6 @@ namespace Assignment_UKHO.Controllers
             };
             return BadRequest(errorResponse);
         }
+
     }
 }
