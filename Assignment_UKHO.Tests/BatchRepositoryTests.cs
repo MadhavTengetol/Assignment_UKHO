@@ -85,6 +85,26 @@ namespace Assignment_UKHO.Tests
 
         }
 
+        [Test]
+        public void GetBatchById_WhenCalled_ReturnsNull()
+        {
+            var batchId = Guid.NewGuid();
+            Batch expectedBatch =null;
+
+
+            mockRepo.Setup(r => r.GetBatchById(batchId)).Returns(Task.FromResult(expectedBatch));
+
+
+
+            var result = mockRepo.Object.GetBatchById(batchId);
+
+            //Assert.AreEqual(Task.FromResult(expectedBatch),result);
+
+            //Assert.That(result.Result, Is.Null);
+            Assert.IsNull(result.Result);
+
+        }
+
 
     }
 }

@@ -18,7 +18,9 @@ namespace Assignment_UKHO.Controllers
         private readonly IMapper mapper;
         private readonly ILogger<BatchController> logger;
         private readonly BusinessUnitServices unitServices;
+        
 
+       
         public BatchController(AppDbContext repo,IValidator<BatchDto> validator,IMapper mapper,ILogger<BatchController> logger)
         {
             this.service = new(repo,mapper);

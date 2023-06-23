@@ -10,6 +10,7 @@ namespace Assignment_UKHO.Services
         private readonly BatchRepository repository;
         private readonly IMapper mapper;
 
+        
         public BatchService(AppDbContext context)
         {
             this.repository = new BatchRepository(context);
