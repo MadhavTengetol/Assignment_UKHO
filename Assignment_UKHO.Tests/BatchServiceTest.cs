@@ -6,6 +6,7 @@ using FileAttributes = Assignment_UKHO.Data.FileAttributes;
 using Assignment_UKHO.Services;
 using AutoMapper;
 using Assignment_UKHO.Dto;
+using Moq;
 
 namespace Assignment_UKHO.Tests
 {
@@ -18,15 +19,15 @@ namespace Assignment_UKHO.Tests
 
         AppDbContext context;
         BatchService service;
-
+        Mock<IMapper> mapper;
 
 
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
-
+            mapper = new Mock<IMapper>();
             context = new AppDbContext(options);
-            service = new BatchService(context);
+            service = new BatchService(context,mapper.Object);
             context.Database.EnsureCreated();
             SeedDatabase();
         }

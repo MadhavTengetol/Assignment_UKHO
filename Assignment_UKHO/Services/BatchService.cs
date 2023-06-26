@@ -5,16 +5,12 @@ using AutoMapper;
 
 namespace Assignment_UKHO.Services
 {
-    public class BatchService 
+    public class BatchService : IService
     {
         private readonly BatchRepository repository;
         private readonly IMapper mapper;
 
         
-        public BatchService(AppDbContext context)
-        {
-            this.repository = new BatchRepository(context);
-        }
         public BatchService(AppDbContext context,IMapper mapper) {
             this.repository = new(context);
             this.mapper = mapper;
@@ -28,10 +24,10 @@ namespace Assignment_UKHO.Services
             return mapper.Map<BatchDto>(result);
         }
 
-        public async Task<BatchDto> GetBatchById(Guid id)
+        public async Task<BatchResponseDto> GetBatchById(Guid id)
         {
             var result = await repository.GetBatchById(id);
-            return mapper.Map<BatchDto>(result);
+            return mapper.Map<BatchResponseDto>(result);
         }
 
     }

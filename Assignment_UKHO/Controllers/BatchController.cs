@@ -12,22 +12,22 @@ namespace Assignment_UKHO.Controllers
     [ApiController]
     public class BatchController : ControllerBase
     {
-        private readonly BatchService service;
+        private readonly BatchService _service;
       
-        private readonly IValidator<BatchDto> validator;
-        private readonly IMapper mapper;
-        private readonly ILogger<BatchController> logger;
-        private readonly BusinessUnitServices unitServices;
+        private readonly IValidator<BatchDto> _validator;
+        private readonly IMapper _mapper;
+        private readonly ILogger<BatchController> _logger;
+        private readonly BusinessUnitServices _unitServices;
         
 
        
         public BatchController(AppDbContext repo,IValidator<BatchDto> validator,IMapper mapper,ILogger<BatchController> logger)
         {
-            this.service = new(repo,mapper);
-            this.validator = validator;
-            this.mapper = mapper;
-            this.logger = logger;
-            this.unitServices = new(repo);
+            this._service = new(repo,mapper);
+            this._validator = validator;
+            this._mapper = mapper;
+            this._logger = logger;
+            this._unitServices = new(repo);
         }
 
         [SwaggerOperation(summary:"Create a new batch to upload files into.")]
@@ -38,7 +38,7 @@ namespace Assignment_UKHO.Controllers
         [Route("batch")]
         public async Task<IActionResult> CreateBatch(BatchDto batch)
         {
-            var result = validator.Validate(batch);
+            var result = _validator.Validate(batch);
             var errorResponse = new ErrorModel();
             if (!result.IsValid)
             {
@@ -54,13 +54,13 @@ namespace Assignment_UKHO.Controllers
                 return BadRequest(errorResponse);
             }
          
-            if (unitServices.IsExists(batch.BusinessUnit).Result)
+            if (_unitServices.IsExists(batch.BusinessUnit).Result)
             {
-                var createdBatch = await service.Create(batch);
-                logger.LogInformation("New Batch is Created");
+                var createdBatch = await _service.Create(batch);
+                _logger.LogInformation("New Batch is Created");
                 return Created("", new { BatchId = createdBatch.BatchId });
             }
-            logger.LogInformation("Business unit does not exists");
+            _logger.LogInformation("Business unit does not exists");
             errorResponse.CorrelationId = Guid.NewGuid().ToString();
             errorResponse.Errors = new List<Errors> { new Errors() { Source="Business Unit",Description="Business Unit Does Not Exists"} };
             return BadRequest(errorResponse);
@@ -80,8 +80,8 @@ namespace Assignment_UKHO.Controllers
         {
             if(batchId != Guid.Empty)
             {
-                var result =await service.GetBatchById(batchId);
-                logger.LogInformation("Get Batch By Id is called");
+                var result =await _service.GetBatchById(batchId);
+                _logger.LogInformation("Get Batch By Id is called");
                 if(result == null)
                 {
                     var errorRes = new ErrorModel
@@ -92,12 +92,11 @@ namespace Assignment_UKHO.Controllers
                             new Errors{Source="Batch Id",Description="Batch Id does not exists."}
                         }
                     };
+                    _logger.LogInformation("Batch Id does not exists.");
                     return NotFound(errorRes);
                 }
-
-                var response = mapper.Map<BatchResponseDto>(result);
-                    
-                return Ok(response);
+                _logger.LogInformation("Batch id found.");    
+                return Ok(result);
             }
             var errorResponse = new ErrorModel
             {
@@ -107,6 +106,7 @@ namespace Assignment_UKHO.Controllers
                     new Errors{Source="Batch Id",Description="Batch Id is not valid."}
                 }
             };
+            _logger.LogInformation("Batch Id is not valid.");
             return BadRequest(errorResponse);
         }
 
