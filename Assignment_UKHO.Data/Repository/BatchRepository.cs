@@ -22,8 +22,6 @@ namespace Assignment_UKHO.Data.Repository
         public async Task<Batch> GetBatchById(Guid id)
         {
             var data =await context.Batches.Where(x => x.BatchId == id)
-                                      .Include(x=>x.Acl.ReadGroups )
-                                      .Include(x=>x.Acl.ReadUsers)
                                       .Include(x=>x.Attributes)
                                       .Include(x=>x.Files)
                                       .ThenInclude(x => x.Attributes)

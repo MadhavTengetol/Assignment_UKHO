@@ -13,16 +13,14 @@ namespace Assignment_UKHO.Validations
 
             RuleFor(b => b.Acl).NotNull().NotEmpty().WithMessage("Acl should not be null").ChildRules(child =>
             {
-                child.RuleForEach(c => c.ReadUsers).NotEmpty().NotNull().WithMessage("User should not be null")
-                     .ChildRules(child =>
+                child.RuleForEach(c => c.ReadUsers).NotEmpty().NotNull().WithMessage("User should not be null").ChildRules(child =>
                 {
-                    child.RuleFor(c => c.User).NotNull().NotEmpty().WithMessage("User Should not be null");
+                    child.RuleFor(c => c.User).NotEmpty().NotNull().WithMessage("User Should not be null");
                 });
-                child.RuleForEach(c => c.ReadGroups).NotEmpty().NotNull().WithMessage("Group should not be null")
-                 .ChildRules(child =>
-                 {
-                     child.RuleFor(c => c.Name).NotNull().NotEmpty().WithMessage("Group Should not be null");
-                 }); ;
+                child.RuleForEach(c => c.ReadGroups).NotEmpty().NotNull().WithMessage("Group should not be null").ChildRules(child =>
+                {
+                    child.RuleFor(c => c.Name).NotEmpty().NotNull().WithMessage("Group Name Should not be null");
+                });
             });
 
             RuleForEach(b => b.Attributes).NotEmpty().NotNull().WithMessage("Attributes should not be null").ChildRules(child =>
@@ -38,7 +36,7 @@ namespace Assignment_UKHO.Validations
             RuleForEach(b => b.Files).NotNull().NotEmpty().WithMessage("Atleast One file should be there").ChildRules(child =>
             {
                 child.RuleFor(c => c.FileName).NotEmpty().NotNull().WithMessage("Filename is Required");
-                child.RuleFor(c => c.FileSize).NotNull().NotEmpty().WithMessage("FileSize should not be null")
+                child.RuleFor(c => c.FileSize).NotNull().NotEmpty().WithMessage("FileSize should not be null or Zero")
                                                 .ExclusiveBetween(1, 200).WithMessage("FileSize should be between 1 -200");
                 child.RuleFor(c => c.MimeType).NotEmpty().NotNull().WithMessage("MimeType Should not be null");
                 child.RuleFor(c => c.Hash).NotEmpty().NotNull().WithMessage("Hash Should not be null"); ;

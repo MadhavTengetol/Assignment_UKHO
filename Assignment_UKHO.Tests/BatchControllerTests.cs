@@ -1,9 +1,7 @@
 ﻿using Assignment_UKHO.Controllers;
 using Assignment_UKHO.Data;
 using Assignment_UKHO.Dto;
-using Assignment_UKHO.Services;
 using AutoMapper;
-using FakeItEasy;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -71,8 +69,8 @@ namespace Assignment_UKHO.Tests
                 BusinessUnit = "Unit1",
                 Acl = new Acl()
                 {
-                    ReadUsers = new List<ReadUsers> { new ReadUsers() { Id = 1, User = "User1" } },
-                    ReadGroups = new List<ReadGroups> { new ReadGroups() { Id = 1, Name = "Group1" } }
+                    ReadUsers = new List<ReadUsers> { new ReadUsers { User = "User1" } },
+                    ReadGroups = new List<ReadGroups> { new ReadGroups { Name = "Group1" } }
                 },
                 Attributes = new List<Attributes> { new Attributes() { Id = 1, Key = "Key", Value = "Value" } },
                 ExpiryDate = DateTime.Today,
@@ -95,71 +93,18 @@ namespace Assignment_UKHO.Tests
             Assert.That(result.Result,Is.TypeOf<NotFoundObjectResult>());
         }
 
-        [Test]
-        public void HttpGet_GetBatchById_ReturnsOk()
-        {
-            var id = Guid.NewGuid();
-            var obj = new BatchResponseDto
-            {
-                BatchId = id,
-                BusinessUnit = "Unit1",
-                Status = "Incomplte",
-                Attributes = new List<Attributes> { new Attributes() { Id = 1, Key = "Key", Value = "Value" } },
-                ExpiryDate = DateTime.UtcNow.AddDays(1),
-                BatchPublicationDate = DateTime.Now,
-                Files = new List<Files> { new Files() {
-                    Id=1,
-                    FileName="Document",
-                    FileSize=49,
-                    MimeType="PDF",
-                    Hash="HashCode",
-                    Attributes=new List<FileAttributes> { new FileAttributes() {  Id=1,Key="Key",Value ="Value"} }
-                } }
-
-            };
-            var obj1 = new BatchDto
-            {
-               
-                BusinessUnit = "Unit1",
-                Acl = new Acl()
-                {
-                    ReadUsers = new List<ReadUsers> { new ReadUsers() { Id = 1, User = "User1" } },
-                    ReadGroups = new List<ReadGroups> { new ReadGroups() { Id = 1, Name = "Group1" } }
-                },
-                Attributes = new List<Attributes> { new Attributes() { Id = 1, Key = "Key", Value = "Value" } },
-                ExpiryDate = DateTime.Today,
-                Files = new List<Files> { new Files() {
-                    Id=1,
-                    FileName="Document",
-                    FileSize=49,
-                    MimeType="PDF",
-                    Hash="HashCode",
-                    Attributes=new List<FileAttributes> { new FileAttributes() {  Id=1,Key="Key",Value ="Value"} }
-                } }
-
-            };
-
-            //validator.Setup(s => s.Validate(obj1).IsValid).Returns(true);
-            //mapper.Setup(m => m.Map<BatchResponseDto>(obj1)).Returns(obj);
-            
-         
-            var result = _controller.GetBatchById(GetBatchId());
-
-            Assert.That(result.Result, Is.TypeOf<NotFoundObjectResult>());
-        }
-
 
         [Test]
         public void HttpPost_CreateBatch_BusinessUnitIsInvalid_ReturnsBadRequest()
         {
-            var obj = new BatchDto
+            var obj = new BatchDto  
             {
                 
                 BusinessUnit = "Unit1",
                 Acl = new Acl()
                 {
-                    ReadUsers = new List<ReadUsers> { new ReadUsers() { Id = 1, User = "User1" } },
-                    ReadGroups = new List<ReadGroups> { new ReadGroups() { Id = 1, Name = "Group1" } }
+                    ReadUsers = new List<ReadUsers> { new ReadUsers { User = "User1" } },
+                    ReadGroups = new List<ReadGroups> { new ReadGroups { Name = "Group1" } }
                 },
                 Attributes = new List<Attributes> { new Attributes() { Id = 1, Key = "Key", Value = "Value" } },
                 ExpiryDate = DateTime.Today,
@@ -253,8 +198,8 @@ namespace Assignment_UKHO.Tests
                 BusinessUnit = "BusinessUnit" ,
                 Acl = new Acl()
                 {
-                    ReadUsers = new List<ReadUsers> { new ReadUsers() { User = "User1" } },
-                    ReadGroups = new List<ReadGroups> { new ReadGroups() { Name = "Group1" } }
+                    ReadUsers = new List<ReadUsers> { new ReadUsers { User = "User1" } },
+                    ReadGroups = new List<ReadGroups> { new ReadGroups { Name = "Group1" } }
                 },
                 Attributes = new List<Attributes> { new Attributes() { Key = "Key", Value = "Value" } },
                 ExpiryDate = DateTime.Today,
@@ -283,8 +228,8 @@ namespace Assignment_UKHO.Tests
                 BusinessUnit = "BusinessUnit",
                 Acl = new Acl()
                 {
-                    ReadUsers = new List<ReadUsers> { new ReadUsers() { User = "User1" } },
-                    ReadGroups = new List<ReadGroups> { new ReadGroups() { Name = "Group1" } }
+                    ReadUsers = new List<ReadUsers> { new ReadUsers { User = "User1" } },
+                    ReadGroups = new List<ReadGroups> { new ReadGroups { Name = "Group1" } }
                 },
                 Attributes = new List<Attributes> { new Attributes() { Key = "Key", Value = "Value" } },
                 ExpiryDate = DateTime.Today,

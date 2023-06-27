@@ -14,7 +14,7 @@ namespace Assignment_UKHO.Data
         public Guid BatchId { get; set; }
         public string Status { get; set; } = "Incomplete";
 
-        public string BusinessUnit { get; set; }
+        public string BusinessUnit { get; set; } = string.Empty;
      
         public Acl Acl { get; set; }
         public List<Attributes> Attributes { get; set; }
