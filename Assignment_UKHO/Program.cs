@@ -1,12 +1,14 @@
 using Assignment_UKHO.Data;
-using Assignment_UKHO.ErrorHandling;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
 using FluentValidation;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 
 #region " Serilog"
@@ -28,8 +30,13 @@ builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
 
+string connectionStringName = "connectionString";
+var url = builder.Configuration["AzureKeyVault:url"];
+var client = new SecretClient(new Uri(url),new DefaultAzureCredential());
+var connectionString = await client.GetSecretAsync(connectionStringName);
 
-builder.Services.AddDbContext<AppDbContext>();
+
+builder.Services.AddDbContext<AppDbContext>(options=>options.UseSqlServer(connectionString.Value.Value));
 
 
 var app = builder.Build();

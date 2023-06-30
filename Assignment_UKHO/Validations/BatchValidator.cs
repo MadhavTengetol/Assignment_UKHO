@@ -32,12 +32,13 @@ namespace Assignment_UKHO.Validations
             RuleFor(b => b.ExpiryDate).Must(b => b > DateTime.Today).WithMessage("Expiry Date must not be in Past")
                                       .NotNull().NotEmpty().WithMessage("Expiry date should not be null");
 
+            RuleFor(b => b.Files.Count).Must(b => b > 0).WithMessage("Atleast One file should be there");
 
             RuleForEach(b => b.Files).NotNull().NotEmpty().WithMessage("Atleast One file should be there").ChildRules(child =>
             {
                 child.RuleFor(c => c.FileName).NotEmpty().NotNull().WithMessage("Filename is Required");
                 child.RuleFor(c => c.FileSize).NotNull().NotEmpty().WithMessage("FileSize should not be null or Zero")
-                                                .ExclusiveBetween(1, 200).WithMessage("FileSize should be between 1 -200");
+                                                .ExclusiveBetween(1, 200000).WithMessage("FileSize should be between 1 -200");
                 child.RuleFor(c => c.MimeType).NotEmpty().NotNull().WithMessage("MimeType Should not be null");
                 child.RuleFor(c => c.Hash).NotEmpty().NotNull().WithMessage("Hash Should not be null"); ;
                 child.RuleForEach(c => c.Attributes).NotNull().NotEmpty().ChildRules(subchild =>
@@ -47,5 +48,6 @@ namespace Assignment_UKHO.Validations
                 });
             });
         }
+
     }
 }

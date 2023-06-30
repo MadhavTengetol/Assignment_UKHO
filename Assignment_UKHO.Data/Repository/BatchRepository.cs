@@ -32,6 +32,22 @@ namespace Assignment_UKHO.Data.Repository
             }
             return data;
         }
+
+        public async Task<bool> SaveFileMetaData(Files file)
+        {
+
+            var obj=context.Files.Where(b => b.BatchId == file.BatchId).FirstOrDefault();
+            context.SaveChanges();
+            
+            if(obj is not null)
+            {
+                context.Files.Add(file);
+                await context.SaveChangesAsync();
+                return true;
+            }
+
+            return false;
+        }
         
     }
 }

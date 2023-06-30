@@ -12,7 +12,7 @@ namespace Assignment_UKHO.Data
         [JsonIgnore]
         public int Id { get; set; }
         public string FileName { get; set; }
-        public int FileSize { get; set; }
+        public long FileSize { get; set; }
         public string MimeType { get; set; }
         public string Hash { get; set; }
         public List<FileAttributes> Attributes { get; set; }

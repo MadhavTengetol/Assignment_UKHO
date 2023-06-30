@@ -30,5 +30,11 @@ namespace Assignment_UKHO.Services
             return mapper.Map<BatchResponseDto>(result);
         }
 
+
+        public async Task<bool> SaveFileMetadata(Files file)
+        {
+            return await repository.SaveFileMetaData(file);
+        }
+
     }
 }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assignment_UKHO.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230622081108_v4")]
-    partial class v4
+    [Migration("20230629073232_v5")]
+    partial class v5
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -152,8 +152,8 @@ namespace Assignment_UKHO.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("FileSize")
-                        .HasColumnType("int");
+                    b.Property<long>("FileSize")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Hash")
                         .IsRequired()

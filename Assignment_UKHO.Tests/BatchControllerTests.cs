@@ -5,6 +5,7 @@ using AutoMapper;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
@@ -26,6 +27,7 @@ namespace Assignment_UKHO.Tests
         Mock<ILogger<BatchController>> _logger;
         Mock<IMapper> _mapper;
         Mock<IValidator<BatchDto>> _validator;
+        Mock<IConfiguration> _configuration;
        
         [OneTimeSetUp]
         public void OneTimeSetup()
@@ -35,8 +37,9 @@ namespace Assignment_UKHO.Tests
             _validator = new Mock<IValidator<BatchDto>>();
             _mapper = new Mock<IMapper>();
             _logger = new Mock<ILogger<BatchController>>();
+            _configuration = new Mock<IConfiguration>();
            
-            _controller = new(_context,_validator.Object,_mapper.Object,_logger.Object);
+            _controller = new(_context,_validator.Object,_mapper.Object,_logger.Object,_configuration.Object);
 
             _context.Database.EnsureCreated();
             SeedDatabase();
