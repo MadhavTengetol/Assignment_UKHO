@@ -12,3 +12,17 @@ C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Data\obj\Debug
 C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Data\obj\Debug\net6.0\Assignment_UKHO.Data.pdb
 C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Data\obj\Debug\net6.0\Assignment_UKHO.Data.genruntimeconfig.cache
 C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Data\obj\Debug\net6.0\ref\Assignment_UKHO.Data.dll
+D:\trainingnov21\Project\Assignment_UKHO\Assignment_UKHO.Data\bin\Debug\net6.0\Assignment_UKHO.Data.deps.json
+D:\trainingnov21\Project\Assignment_UKHO\Assignment_UKHO.Data\bin\Debug\net6.0\Assignment_UKHO.Data.runtimeconfig.json
+D:\trainingnov21\Project\Assignment_UKHO\Assignment_UKHO.Data\bin\Debug\net6.0\Assignment_UKHO.Data.dll
+D:\trainingnov21\Project\Assignment_UKHO\Assignment_UKHO.Data\bin\Debug\net6.0\Assignment_UKHO.Data.pdb
+D:\trainingnov21\Project\Assignment_UKHO\Assignment_UKHO.Data\obj\Debug\net6.0\Assignment_UKHO.Data.csproj.AssemblyReference.cache
+D:\trainingnov21\Project\Assignment_UKHO\Assignment_UKHO.Data\obj\Debug\net6.0\Assignment_UKHO.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\trainingnov21\Project\Assignment_UKHO\Assignment_UKHO.Data\obj\Debug\net6.0\Assignment_UKHO.Data.AssemblyInfoInputs.cache
+D:\trainingnov21\Project\Assignment_UKHO\Assignment_UKHO.Data\obj\Debug\net6.0\Assignment_UKHO.Data.AssemblyInfo.cs
+D:\trainingnov21\Project\Assignment_UKHO\Assignment_UKHO.Data\obj\Debug\net6.0\Assignment_UKHO.Data.csproj.CoreCompileInputs.cache
+D:\trainingnov21\Project\Assignment_UKHO\Assignment_UKHO.Data\obj\Debug\net6.0\Assignment_UKHO.Data.dll
+D:\trainingnov21\Project\Assignment_UKHO\Assignment_UKHO.Data\obj\Debug\net6.0\refint\Assignment_UKHO.Data.dll
+D:\trainingnov21\Project\Assignment_UKHO\Assignment_UKHO.Data\obj\Debug\net6.0\Assignment_UKHO.Data.pdb
+D:\trainingnov21\Project\Assignment_UKHO\Assignment_UKHO.Data\obj\Debug\net6.0\Assignment_UKHO.Data.genruntimeconfig.cache
+D:\trainingnov21\Project\Assignment_UKHO\Assignment_UKHO.Data\obj\Debug\net6.0\ref\Assignment_UKHO.Data.dll

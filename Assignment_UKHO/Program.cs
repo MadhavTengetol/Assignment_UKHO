@@ -10,6 +10,12 @@ using Serilog;
 var builder = WebApplication.CreateBuilder(args);
 
 
+builder.Services.AddSwaggerGen(x =>
+{
+    x.EnableAnnotations();
+   
+});
+builder.Services.AddSwaggerGen();
 
 #region " Serilog"
 var logger = new LoggerConfiguration()
@@ -23,7 +29,7 @@ builder.Logging.AddSerilog(logger);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(x => x.EnableAnnotations());
+
 
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
@@ -32,20 +38,20 @@ builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
 string connectionStringName = "connectionString";
 var url = builder.Configuration["AzureKeyVault:url"];
-var client = new SecretClient(new Uri(url),new DefaultAzureCredential());
+var client = new SecretClient(new Uri(url), new DefaultAzureCredential());
 var connectionString = await client.GetSecretAsync(connectionStringName);
 
 
-builder.Services.AddDbContext<AppDbContext>(options=>options.UseSqlServer(connectionString.Value.Value));
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString.Value.Value));
 
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// configure the http request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("v1/swagger.json", "Assignment UKHO API"));
 }
 
 app.UseHttpsRedirection();

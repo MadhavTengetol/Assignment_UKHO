@@ -181,3 +181,8 @@ C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Tests\bin\Debu
 C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Tests\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Tests\bin\Debug\net6.0\System.IO.Hashing.dll
 C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Tests\bin\Debug\net6.0\System.Memory.Data.dll
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Tests\bin\Debug\net6.0\Azure.Extensions.AspNetCore.Configuration.Secrets.dll
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Tests\bin\Debug\net6.0\Azure.Identity.dll
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Tests\bin\Debug\net6.0\Azure.Security.KeyVault.Secrets.dll
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Tests\bin\Debug\net6.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\Madhav15303\source\repos\Assignment_UKHO\Assignment_UKHO.Tests\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll

@@ -2022,11 +2022,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Madhav15303\\source\\repos\\Assignment_UKHO\\Assignment_UKHO.Data\\Assignment_UKHO.Data.csproj",
+      "projectUniqueName": "D:\\trainingnov21\\Project\\Assignment_UKHO\\Assignment_UKHO.Data\\Assignment_UKHO.Data.csproj",
       "projectName": "Assignment_UKHO.Data",
-      "projectPath": "C:\\Users\\Madhav15303\\source\\repos\\Assignment_UKHO\\Assignment_UKHO.Data\\Assignment_UKHO.Data.csproj",
+      "projectPath": "D:\\trainingnov21\\Project\\Assignment_UKHO\\Assignment_UKHO.Data\\Assignment_UKHO.Data.csproj",
       "packagesPath": "C:\\Users\\Madhav15303\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Madhav15303\\source\\repos\\Assignment_UKHO\\Assignment_UKHO.Data\\obj\\",
+      "outputPath": "D:\\trainingnov21\\Project\\Assignment_UKHO\\Assignment_UKHO.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -179,6 +179,7 @@ namespace Assignment_UKHO.Tests
 
             _validator.Setup(s => s.Validate(obj).IsValid).Returns(true);
             
+            
             _mapper.Setup(m => m.Map<Batch>(obj)).Returns(obj1);
             _mapper.Setup(m => m.Map<BatchDto>(obj1)).Returns(obj);
             var result = _controller.CreateBatch(obj);

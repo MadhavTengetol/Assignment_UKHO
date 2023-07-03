@@ -211,7 +211,7 @@ namespace Assignment_UKHO.Controllers
         private SecretClient GetKeyVaultClient()
         {
             var keyVaultName = _configuration["AzureKeyVault:keyVaultName"];
-            var url = _configuration["AzureKeyVault:url"];
+            var url = _configuration["AzureKeyVault:url"]!;
 
             var client = new SecretClient(new Uri(url),new DefaultAzureCredential());
             _logger.LogInformation("Key Vault Client Created.");
